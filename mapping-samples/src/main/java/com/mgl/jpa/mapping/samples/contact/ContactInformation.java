@@ -1,5 +1,6 @@
 package com.mgl.jpa.mapping.samples.contact;
 
+import javax.persistence.Embedded;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -20,6 +21,7 @@ public class ContactInformation implements HasContactInformation {
     private String lastName = "";
 
     @NotNull
+    @Embedded
     private Address address;
 
 }
