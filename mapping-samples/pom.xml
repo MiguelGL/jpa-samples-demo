@@ -224,7 +224,7 @@
                             <formatPreferences>
                                 <javaLangAsFQN>skip</javaLangAsFQN>
                             </formatPreferences>
-                            <verbose>true</verbose>
+                            <verbose>false</verbose>
                         </configuration>
                     </execution>
 <!--
@@ -235,7 +235,7 @@
                             <goal>testDelombok</goal>
                         </goals>
                         <configuration>
-                            <verbose>true</verbose>
+                            <verbose>false</verbose>
                         </configuration>
                     </execution>
 -->
