@@ -31,7 +31,11 @@
         <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
         <hibernate-commons.version>5.0.1.Final</hibernate-commons.version>
 
+        <querydsl.version>4.1.0</querydsl.version>
+
         <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
+
+        <querydsl-apt-maven-plugin.version>1.1.3</querydsl-apt-maven-plugin.version>
     </properties>
 
     <modules>
@@ -137,6 +141,19 @@
                 <version>${mysql-connector.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-apt</artifactId>
+                <version>${querydsl.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-jpa</artifactId>
+                <version>${querydsl.version}</version>
+            </dependency>
+
         </dependencies>
 
     </dependencyManagement>
@@ -151,6 +168,12 @@
                 <plugin>
                     <artifactId>maven-enforcer-plugin</artifactId>
                     <version>${maven-enforcer-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>com.mysema.maven</groupId>
+                    <artifactId>apt-maven-plugin</artifactId>
+                    <version>${querydsl-apt-maven-plugin.version}</version>
                 </plugin>
 
             </plugins>
