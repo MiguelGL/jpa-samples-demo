@@ -54,6 +54,10 @@
             <property name="hibernate.hikari.dataSourceClassName" value="com.mysql.cj.jdbc.MysqlDataSource" />
             <property name="hibernate.hikari.dataSource.url" value="jdbc:mysql://localhost:3306/jpa?zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;serverTimezone=UTC" />
 
+            <property name="org.hibernate.envers.audit_table_suffix" value="_Audit"/>
+            <property name="org.hibernate.envers.revision_field_name" value="rev"/>
+            <property name="org.hibernate.envers.revision_type_field_name" value="revtype"/>
+            <property name="org.hibernate.envers.revision_type_field_name" value="revtype"/>
         </properties>
     </persistence-unit>
 
