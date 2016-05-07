@@ -12,7 +12,8 @@ import org.junit.BeforeClass;
 
 public abstract class BaseJpaTestSupport {
 
-    private static final String PU_NAME = "com.mgl.jpa_mapping-samples_PU";
+//    private static final String PU_NAME = "com.mgl.jpa_mapping-samples_PU";
+    private static final String PU_NAME = "com.mgl.jpa_mapping-samples_inmemory-PU";
 
     private static EntityManagerFactory emf;
 
