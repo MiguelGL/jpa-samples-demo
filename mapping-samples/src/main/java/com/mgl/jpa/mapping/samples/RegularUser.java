@@ -1,6 +1,7 @@
 package com.mgl.jpa.mapping.samples;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Index;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -36,5 +38,8 @@ public class RegularUser extends UserProfile {
     @NotNull
     @Enumerated(EnumType.STRING) @Column(nullable = false)
     private RegistrationSource registrationSource;
+
+    @ManyToMany(mappedBy = "authors")
+    private List<Document> documents;
 
 }

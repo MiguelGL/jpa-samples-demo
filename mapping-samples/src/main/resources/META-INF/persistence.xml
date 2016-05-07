@@ -13,6 +13,7 @@
         <class>com.mgl.jpa.mapping.samples.RegularUser</class>
         <class>com.mgl.jpa.mapping.samples.EnterpriseUser</class>
         <class>com.mgl.jpa.mapping.samples.Avatar</class>
+        <class>com.mgl.jpa.mapping.samples.Document</class>
 
         <properties>
             <!-- <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/> -->
@@ -64,6 +65,7 @@
         <class>com.mgl.jpa.mapping.samples.RegularUser</class>
         <class>com.mgl.jpa.mapping.samples.EnterpriseUser</class>
         <class>com.mgl.jpa.mapping.samples.Avatar</class>
+        <class>com.mgl.jpa.mapping.samples.Document</class>
 
         <properties>
             <property name="javax.persistence.jdbc.dialect" value="org.hibernate.dialect.DerbyDialect" />
