@@ -17,13 +17,18 @@
             <property name="javax.persistence.schema-generation.scripts.action" value="drop-and-create"/>
             <property name="javax.persistence.schema-generation.scripts.create-target" value="target/create-schema.sql"/>
             <property name="javax.persistence.schema-generation.scripts.drop-target" value="target/drop-schema.sql"/>
-            <!--
-                  <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
-                  <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:sampleDB;create=true"/>
-            -->
+<!--
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:sampleDB;create=true"/>
+-->
             <property name="javax.persistence.sql-load-script-source" value="src/test/sql/test-imports.sql"/>
 
             <property name="hibernate.validator.apply_to_ddl" value="true"/>
+            <!-- https://docs.jboss.org/hibernate/orm/5.1/javadocs/org/hibernate/boot/model/naming/ImplicitNamingStrategy.html -->
+            <!-- http://stackoverflow.com/questions/37062675/hibernate-5-1-x-naming-strategy-backward-compatible-with-hibernate-4-x -->
+            <!-- https://github.com/v-ladynev/fluent-hibernate/blob/master/fluent-hibernate-core/src/main/java/com/github/fluent/hibernate/cfg/strategy/hibernate5/Hibernate5NamingStrategy.java -->
+            <property name="hibernate.implicit_naming_strategy" value="org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl"/>
+            <!--<property name="hibernate.physical_naming_strategy" value="org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl"/>-->
 
             <!--<property name="javax.persistence.jdbc.show_sql" value="false"/>-->
             <property name="hibernate.show_sql" value="false"/>
