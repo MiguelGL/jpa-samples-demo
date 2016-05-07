@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.annotation.Nonnegative;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Index;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -28,9 +31,11 @@ import org.hibernate.validator.constraints.NotBlank;
 @Table(indexes = {
     @Index(name = "document__title_idx", columnList = "title")
 })
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "documentKind")
 @Audited
 @Getter @Setter @ToString(callSuper = true) @NoArgsConstructor
-public class Document extends BaseEntity {
+public abstract class Document extends BaseEntity {
 
     private static final int TITLE_MIN_LEN = 0;
     private static final int TITLE_MAX_LEN = 128;
@@ -45,12 +50,12 @@ public class Document extends BaseEntity {
 
     @ManyToMany
     @JoinTable(
-        name = "Document_RegularUser",
+        name = "Document_Author",
         joinColumns = @JoinColumn(name = "documentId", referencedColumnName = "id"),
         inverseJoinColumns = @JoinColumn(name = "authorId", referencedColumnName = "id"),
         uniqueConstraints = {
             @UniqueConstraint(
-                name = "document_regular_user__documentId_authorId_uidx",
+                name = "document_author__documentId_authorId_uidx",
                 columnNames = {"documentId", "authorId"})
         }
     )
