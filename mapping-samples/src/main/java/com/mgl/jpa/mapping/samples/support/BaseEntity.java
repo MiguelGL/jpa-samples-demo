@@ -2,6 +2,7 @@ package com.mgl.jpa.mapping.samples.support;
 
 import java.io.Serializable;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.ColumnDefault;
 
 @MappedSuperclass
 @Getter @Setter(AccessLevel.PROTECTED) @EqualsAndHashCode(of = "id") @ToString @NoArgsConstructor
@@ -26,7 +28,7 @@ public class BaseEntity implements Serializable {
     private Long id;
 
     @NotNull
-    @Version @Column(nullable = false)
+    @Version @Column(nullable = false) @ColumnDefault("0")
     private Long version;
 
 }
