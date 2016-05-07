@@ -21,7 +21,7 @@ import org.hibernate.annotations.ColumnDefault;
 @Getter @Setter(AccessLevel.PROTECTED) @EqualsAndHashCode(of = "id") @ToString @NoArgsConstructor
 public class BaseEntity implements Serializable {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(nullable = false)
     private Long id;
 
     @Version @Column(nullable = false) @ColumnDefault("0")

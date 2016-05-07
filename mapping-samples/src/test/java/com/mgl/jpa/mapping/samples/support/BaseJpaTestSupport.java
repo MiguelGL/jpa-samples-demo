@@ -48,6 +48,14 @@ public abstract class BaseJpaTestSupport {
         em.getTransaction().begin();
     }
 
+    protected void commitAndBeginTransactionAgain() {
+        em.getTransaction().commit();
+        em.close();
+
+        em = emf.createEntityManager();
+        em.getTransaction().begin();
+    }
+
     @After
     public void tearDown() {
         if (em != null) {
