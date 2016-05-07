@@ -34,6 +34,8 @@
 
             <property name="hibernate.validator.apply_to_ddl" value="false"/>
 
+            <property name="hibernate.discriminator.ignore_explicit_for_joined" value="false"/>
+
             <!-- https://docs.jboss.org/hibernate/orm/5.1/userguide/html_single/Hibernate_User_Guide.html#naming -->
             <!-- https://docs.jboss.org/hibernate/orm/5.1/javadocs/org/hibernate/boot/model/naming/ImplicitNamingStrategy.html -->
             <!-- http://stackoverflow.com/questions/37062675/hibernate-5-1-x-naming-strategy-backward-compatible-with-hibernate-4-x -->
@@ -57,7 +59,7 @@
             <property name="org.hibernate.envers.audit_table_suffix" value="_Audit"/>
             <property name="org.hibernate.envers.revision_field_name" value="rev"/>
             <property name="org.hibernate.envers.revision_type_field_name" value="revtype"/>
-            <property name="org.hibernate.envers.revision_type_field_name" value="revtype"/>
+            <property name="org.hibernate.envers.do_not_audit_optimistic_locking_field" value="false"/>
         </properties>
     </persistence-unit>
 
@@ -87,12 +89,18 @@
             -->
             <property name="javax.persistence.sql-load-script-source" value="src/test/sql/test-imports.sql"/>
 
+            <property name="hibernate.discriminator.ignore_explicit_for_joined" value="false"/>
+
             <property name="hibernate.validator.apply_to_ddl" value="false"/>
 
             <!--<property name="javax.persistence.jdbc.show_sql" value="true"/>-->
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true" />
 
+            <property name="org.hibernate.envers.audit_table_suffix" value="_Audit"/>
+            <property name="org.hibernate.envers.revision_field_name" value="rev"/>
+            <property name="org.hibernate.envers.revision_type_field_name" value="revtype"/>
+            <property name="org.hibernate.envers.do_not_audit_optimistic_locking_field" value="false"/>
         </properties>
     </persistence-unit>
 
