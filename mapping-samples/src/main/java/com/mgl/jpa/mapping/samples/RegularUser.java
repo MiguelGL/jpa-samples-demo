@@ -40,6 +40,16 @@ public class RegularUser extends UserProfile {
     private RegistrationSource registrationSource;
 
     @ManyToMany(mappedBy = "authors")
+//    @JoinTable(
+//        name = "Document_RegularUser",
+//        joinColumns = @JoinColumn(name = "authorId", referencedColumnName = "id"),
+//        inverseJoinColumns = @JoinColumn(name = "documentId", referencedColumnName = "id"),
+//        uniqueConstraints = {
+//            @UniqueConstraint(
+//                name = "document_regular_user__documentId_authorId_uidx",
+//                columnNames = {"documentId", "authorId"})
+//        }
+//    )
     private List<Document> documents;
 
 }
