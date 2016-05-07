@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 
 import com.mgl.jpa.mapping.samples.contact.ContactInformation;
 import com.mgl.jpa.mapping.samples.contact.HasContactInformation;
-import com.mgl.jpa.mapping.samples.support.BaseEntity;
+import com.mgl.jpa.mapping.samples.support.TsControlledEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,7 +24,7 @@ import org.hibernate.envers.Audited;
 @Entity
 @Audited
 @Getter @Setter @ToString @NoArgsConstructor
-public class UserProfile extends BaseEntity implements HasContactInformation {
+public class UserProfile extends TsControlledEntity implements HasContactInformation {
 
     @OneToOne(optional = true, mappedBy = "userProfile")
     private Avatar avatar;
