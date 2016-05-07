@@ -25,8 +25,9 @@
 
             <property name="hibernate.validator.apply_to_ddl" value="true"/>
 
-            <property name="hibernate.show_sql" value="false" />
-            <property name="hibernate.format_sql" value="false" />
+            <!--<property name="javax.persistence.jdbc.show_sql" value="false"/>-->
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="true" />
 
             <!-- https://github.com/brettwooldridge/HikariCP/wiki/MySQL-Configuration -->
             <!--<property name="hibernate.connection.provider_class" value="com.zaxxer.hikari.hibernate.HikariConnectionProvider" />-->
@@ -64,8 +65,9 @@
 
             <property name="hibernate.validator.apply_to_ddl" value="true"/>
 
-            <property name="hibernate.show_sql" value="false" />
-            <property name="hibernate.format_sql" value="false" />
+            <!--<property name="javax.persistence.jdbc.show_sql" value="true"/>-->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true" />
 
         </properties>
     </persistence-unit>

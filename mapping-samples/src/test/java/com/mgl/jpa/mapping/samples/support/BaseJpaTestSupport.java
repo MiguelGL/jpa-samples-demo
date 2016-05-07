@@ -5,11 +5,14 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import lombok.Getter;
+import lombok.experimental.Accessors;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
+@Accessors(fluent = true)
 public abstract class BaseJpaTestSupport {
 
     private static final String DB_SPEC_SYSPROP = "db-spec";
@@ -19,7 +22,7 @@ public abstract class BaseJpaTestSupport {
 
     private static EntityManagerFactory emf;
 
-    private EntityManager em;
+    @Getter private EntityManager em;
 
     @BeforeClass
     public static void setUpClass() {
