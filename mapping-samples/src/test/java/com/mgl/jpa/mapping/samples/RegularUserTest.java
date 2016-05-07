@@ -5,7 +5,7 @@ import java.util.Date;
 import com.mgl.jpa.mapping.samples.support.BaseJpaTestSupport;
 import org.junit.Test;
 
-public class UserProfileTest extends BaseJpaTestSupport {
+public class RegularUserTest extends BaseJpaTestSupport {
 
     @Test
     public void testCreateNew() {
@@ -15,7 +15,7 @@ public class UserProfileTest extends BaseJpaTestSupport {
 
         em().persist(company);
 
-        UserProfile userProfile = new UserProfile();
+        RegularUser userProfile = new RegularUser();
         userProfile.setCompany(company);
         userProfile.setEmail("test@email.com");
         userProfile.setSignUpTs(new Date());

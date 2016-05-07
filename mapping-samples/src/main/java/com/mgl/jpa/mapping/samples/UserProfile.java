@@ -1,33 +1,28 @@
 package com.mgl.jpa.mapping.samples;
 
-import java.util.Date;
-
-import javax.persistence.Basic;
-import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import com.mgl.jpa.mapping.samples.contact.ContactInformation;
 import com.mgl.jpa.mapping.samples.contact.HasContactInformation;
-import com.mgl.jpa.mapping.samples.support.TsControlledEntity;
+import com.mgl.jpa.mapping.samples.support.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Delegate;
-import org.hibernate.envers.Audited;
 
 @Entity
-@Audited
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "userKind")
 @Getter @Setter @ToString(callSuper = true) @NoArgsConstructor
-public class UserProfile extends TsControlledEntity implements HasContactInformation {
+public abstract class UserProfile extends BaseEntity implements HasContactInformation {
 
     @NotNull
     @ManyToOne(optional = false)
@@ -39,13 +34,5 @@ public class UserProfile extends TsControlledEntity implements HasContactInforma
     @Delegate(types = {HasContactInformation.class})
     @Embedded @NotNull
     private ContactInformation contactInformation = new ContactInformation();
-
-    @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date signUpTs;
-
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    private RegistrationSource registrationSource;
 
 }

@@ -15,13 +15,14 @@ import javax.validation.constraints.Size;
 
 import com.mgl.jpa.mapping.samples.contact.ContactInformation;
 import com.mgl.jpa.mapping.samples.contact.HasContactInformation;
-import com.mgl.jpa.mapping.samples.support.TsControlledEntity;
+import com.mgl.jpa.mapping.samples.tscontrol.TsControlledEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Delegate;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
@@ -48,6 +49,7 @@ public class Company extends TsControlledEntity implements HasContactInformation
     @Delegate(types = {HasContactInformation.class})
     private ContactInformation contactInformation = new ContactInformation();
 
+    @NotAudited
     @OneToMany(mappedBy = "company", cascade = {CascadeType.REMOVE}, orphanRemoval = true)
     private List<UserProfile> userProfiles;
 
