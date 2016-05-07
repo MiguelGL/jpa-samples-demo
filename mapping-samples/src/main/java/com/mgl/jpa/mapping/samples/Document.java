@@ -17,25 +17,33 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.mgl.jpa.mapping.samples.support.BaseEntity;
+import com.mgl.jpa.mapping.samples.logicaldelete.LogicallyDeletableBaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(indexes = {
-    @Index(name = "document__title_idx", columnList = "title")
+    @Index(name = "document__title_idx", columnList = "title"),
+    @Index(name = "document__deleted_idx", columnList = "deleted")
 })
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "documentKind")
+@SQLDelete(sql =
+        "update Document "
+        + "set deleted = true, deletionTs = CURRENT_TIMESTAMP "
+        + "where id = ? and version = ?")
+@Where(clause = "not deleted")
 @Audited
 @Getter @Setter @ToString(callSuper = true, exclude = {"authors"}) @NoArgsConstructor
-public abstract class Document extends BaseEntity {
+public abstract class Document extends LogicallyDeletableBaseEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -62,6 +70,7 @@ public abstract class Document extends BaseEntity {
         }
     )
     @NotAudited
+    @Where(clause = "not deleted")
     private List<RegularUser> authors;
 
 }

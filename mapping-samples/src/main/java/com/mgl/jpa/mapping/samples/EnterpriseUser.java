@@ -16,11 +16,14 @@ import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
+import com.mgl.jpa.mapping.samples.logicaldelete.IsLogicallyDeletable;
+import com.mgl.jpa.mapping.samples.logicaldelete.LogicalDeletion;
 import com.mgl.jpa.mapping.samples.tscontrol.HasTsControlFields;
 import com.mgl.jpa.mapping.samples.tscontrol.TsControlFields;
 import lombok.AccessLevel;
@@ -29,11 +32,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Delegate;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Entity
+@Table(indexes = {
+    @Index(name = "enterprise_user__deleted_idx", columnList = "deleted")
+})
 @DiscriminatorValue("e")
+@SQLDelete(sql =
+        "update EnterpriseUser "
+        + "set deleted = true, deletionTs = CURRENT_TIMESTAMP "
+        + "where id = ?")
+@Where(clause = "not deleted")
 @Getter @Setter @ToString(callSuper = true) @NoArgsConstructor
-public class EnterpriseUser extends UserProfile implements HasTsControlFields {
+public class EnterpriseUser extends UserProfile implements HasTsControlFields, IsLogicallyDeletable {
 
     private static final long serialVersionUID = 1L;
 
@@ -52,6 +65,10 @@ public class EnterpriseUser extends UserProfile implements HasTsControlFields {
     @NotNull
     @Enumerated(EnumType.STRING)
     private RegistrationSource registrationSource;
+
+    @Embedded @NotNull
+    @Delegate(types = {IsLogicallyDeletable.class})
+    private LogicalDeletion deleteSupport = new LogicalDeletion();
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
