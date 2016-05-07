@@ -1,5 +1,7 @@
 package com.mgl.jpa.mapping.samples.contact;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.validation.constraints.NotNull;
@@ -10,7 +12,9 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.Email;
 
 @Data
-public class ContactInformation implements HasContactInformation {
+public class ContactInformation implements HasContactInformation, Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Email
     @NotNull @Size(min = EMAIL_MIN_LEN, max = EMAIL_MAX_LEN)
