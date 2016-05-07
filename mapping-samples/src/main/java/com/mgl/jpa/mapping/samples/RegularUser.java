@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -16,32 +15,21 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-import com.mgl.jpa.mapping.samples.logicaldelete.IsLogicallyDeletable;
-import com.mgl.jpa.mapping.samples.logicaldelete.LogicalDeletion;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.experimental.Delegate;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(
     indexes = {
         @Index(name = "regular_user__registrationSource_idx", columnList = "registrationSource"),
-        @Index(name = "regular_user__signupTs_idx", columnList = "signUpTs"),
-        @Index(name = "regular_user__deleted_idx", columnList = "deleted")
+        @Index(name = "regular_user__signupTs_idx", columnList = "signUpTs")
     }
 )
 @DiscriminatorValue("r")
-@SQLDelete(sql =
-        "update RegularUser "
-        + "set deleted = true, deletionTs = CURRENT_TIMESTAMP "
-        + "where id = ?")
-@Where(clause = "not deleted")
 @Getter @Setter @ToString(callSuper = true, exclude = {"documents"}) @NoArgsConstructor
-public class RegularUser extends UserProfile implements IsLogicallyDeletable {
+public class RegularUser extends UserProfile {
 
     private static final long serialVersionUID = 1L;
 
@@ -52,10 +40,6 @@ public class RegularUser extends UserProfile implements IsLogicallyDeletable {
     @NotNull
     @Enumerated(EnumType.STRING) @Column(nullable = false)
     private RegistrationSource registrationSource;
-
-    @Embedded @NotNull
-    @Delegate(types = {IsLogicallyDeletable.class})
-    private LogicalDeletion deleteSupport = new LogicalDeletion();
 
     @ManyToMany(mappedBy = "authors")
 //    @JoinTable(
@@ -68,7 +52,6 @@ public class RegularUser extends UserProfile implements IsLogicallyDeletable {
 //                columnNames = {"documentId", "authorId"})
 //        }
 //    )
-    @Where(clause = "not deleted")
     private List<Document> documents;
 
 }

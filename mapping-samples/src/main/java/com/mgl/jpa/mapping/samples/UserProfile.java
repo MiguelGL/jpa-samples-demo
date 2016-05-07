@@ -14,21 +14,18 @@ import javax.validation.constraints.NotNull;
 
 import com.mgl.jpa.mapping.samples.contact.ContactInformation;
 import com.mgl.jpa.mapping.samples.contact.HasContactInformation;
-import com.mgl.jpa.mapping.samples.logicaldelete.LogicallyDeletableBaseEntity;
+import com.mgl.jpa.mapping.samples.support.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Delegate;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(
     indexes = {
         @Index(name = "user_profile__userKind_idx", columnList = "userKind"),
-        @Index(name = "user_profile__firstName_lastName_idx", columnList = "firstName, lastName"),
-        @Index(name = "user_profile__deleted_idx", columnList = "deleted")
+        @Index(name = "user_profile__firstName_lastName_idx", columnList = "firstName, lastName")
     },
     uniqueConstraints = {
         @UniqueConstraint(name = "user_profile__email_uidx", columnNames = "email")
@@ -36,13 +33,8 @@ import org.hibernate.annotations.Where;
 )
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "userKind")
-@SQLDelete(sql =
-        "update UserProfile "
-        + "set deleted = true, deletionTs = CURRENT_TIMESTAMP "
-        + "where id = ? and version = ?")
-@Where(clause = "not deleted")
 @Getter @Setter @ToString(callSuper = true) @NoArgsConstructor
-public abstract class UserProfile extends LogicallyDeletableBaseEntity implements HasContactInformation {
+public abstract class UserProfile extends BaseEntity implements HasContactInformation {
 
     private static final long serialVersionUID = 1L;
 
