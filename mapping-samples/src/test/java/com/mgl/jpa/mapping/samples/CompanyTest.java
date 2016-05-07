@@ -49,6 +49,10 @@ public class CompanyTest extends BaseJpaTestSupport {
                     .forEach(System.out::println);
         });
         Assert.assertTrue(auditions.size() == 3);
+
+        commitAndBeginTransactionAgain();
+
+        em().remove(em().find(Company.class, sameCompanyAgain.getId()));
     }
 
 }

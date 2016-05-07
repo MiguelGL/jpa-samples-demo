@@ -22,6 +22,10 @@ public class RegularUserTest extends BaseJpaTestSupport {
         userProfile.setRegistrationSource(RegistrationSource.MANUAL);
 
         em().persist(userProfile);
+
+        commitAndBeginTransactionAgain();
+
+        em().remove(em().find(RegularUser.class, userProfile.getId()));
     }
 
 }
