@@ -69,6 +69,12 @@
             </dependency>
 
             <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.hibernate.common</groupId>
                 <artifactId>hibernate-commons-annotations</artifactId>
                 <version>${hibernate-commons.version}</version>
@@ -78,6 +84,13 @@
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-validator-annotation-processor</artifactId>
                 <version>${hibernate-validator.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-jpamodelgen</artifactId>
+                <version>${hibernate.version}</version>
+                <scope>provided</scope>
             </dependency>
 
             <dependency>
