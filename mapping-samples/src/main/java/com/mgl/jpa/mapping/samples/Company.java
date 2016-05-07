@@ -28,12 +28,12 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 @Audited
 @Table(
-        indexes = {
-            @Index(name = "company__firstName_lastName_idx", columnList = "firstName, lastName")
-        },
-        uniqueConstraints = {
-            @UniqueConstraint(name = "company__email_uidx", columnNames = {"email"})
-        }
+    indexes = {
+        @Index(name = "company__firstName_lastName_idx", columnList = "firstName, lastName")
+    },
+    uniqueConstraints = {
+        @UniqueConstraint(name = "company__email_uidx", columnNames = {"email"})
+    }
 )
 @Getter @Setter @ToString(callSuper = true) @NoArgsConstructor
 public class Company extends TsControlledEntity implements HasContactInformation {
