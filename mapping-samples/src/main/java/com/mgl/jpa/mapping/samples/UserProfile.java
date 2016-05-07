@@ -36,6 +36,8 @@ import lombok.experimental.Delegate;
 @Getter @Setter @ToString(callSuper = true) @NoArgsConstructor
 public abstract class UserProfile extends BaseEntity implements HasContactInformation {
 
+    private static final long serialVersionUID = 1L;
+
     @NotNull
     @ManyToOne(optional = false)
     private Company company;

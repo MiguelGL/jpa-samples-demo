@@ -37,6 +37,8 @@ import org.hibernate.validator.constraints.NotBlank;
 @Getter @Setter @ToString(callSuper = true, exclude = {"authors"}) @NoArgsConstructor
 public abstract class Document extends BaseEntity {
 
+    private static final long serialVersionUID = 1L;
+
     private static final int TITLE_MIN_LEN = 0;
     private static final int TITLE_MAX_LEN = 128;
 

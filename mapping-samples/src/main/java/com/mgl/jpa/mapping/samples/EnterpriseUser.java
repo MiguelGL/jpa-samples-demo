@@ -35,6 +35,8 @@ import lombok.experimental.Delegate;
 @Getter @Setter @ToString(callSuper = true) @NoArgsConstructor
 public class EnterpriseUser extends UserProfile implements HasTsControlFields {
 
+    private static final long serialVersionUID = 1L;
+
     private static final int PERMISSION_MAX_LEN = 32;
 
     @NotNull

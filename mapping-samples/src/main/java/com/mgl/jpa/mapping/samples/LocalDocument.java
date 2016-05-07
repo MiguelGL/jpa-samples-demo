@@ -16,6 +16,8 @@ import lombok.ToString;
 @Getter @Setter @ToString(callSuper = true) @NoArgsConstructor
 public class LocalDocument extends Document {
 
+    private static final long serialVersionUID = 1L;
+
     private static final int PATH_MIN_LEN = 2;
     private static final int PATH_MAX_LEN = 128;
 

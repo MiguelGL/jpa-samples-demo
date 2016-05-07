@@ -18,6 +18,8 @@ import org.hibernate.validator.constraints.NotBlank;
 @Getter @Setter @ToString(callSuper = true) @NoArgsConstructor
 public class OnlineDocument extends Document {
 
+    private static final long serialVersionUID = 1L;
+
     private static final int URL_MAX_LEN = 128;
 
     private static final String URL_REGEX =

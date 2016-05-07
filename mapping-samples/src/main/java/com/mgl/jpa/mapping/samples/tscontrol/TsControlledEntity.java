@@ -19,6 +19,8 @@ import lombok.experimental.Delegate;
 @Getter @Setter(AccessLevel.PROTECTED) @ToString(callSuper = true) @NoArgsConstructor
 public abstract class TsControlledEntity extends BaseEntity {
 
+    private static final long serialVersionUID = 1L;
+
     @NotNull
     @Embedded
     @Delegate(types = {HasTsControlFields.class})

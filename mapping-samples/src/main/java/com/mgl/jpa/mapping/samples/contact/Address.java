@@ -12,6 +12,8 @@ import org.hibernate.annotations.ColumnDefault;
 @Data
 public class Address implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     private static final int STREET_MIN_LEN = 0;
     private static final int STREET_MAX_LEN = 64;
 

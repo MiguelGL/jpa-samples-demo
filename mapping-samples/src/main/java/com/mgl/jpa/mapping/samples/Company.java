@@ -38,6 +38,8 @@ import org.hibernate.validator.constraints.NotBlank;
 @Getter @Setter @ToString(callSuper = true, exclude = {"userProfiles"}) @NoArgsConstructor
 public class Company extends TsControlledEntity implements HasContactInformation {
 
+    private static final long serialVersionUID = 1L;
+
     private static final int ORG_NAME_MIN_LEN = 1;
     private static final int ORG_NAME_MAX_LEN = 64;
 

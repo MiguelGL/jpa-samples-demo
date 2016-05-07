@@ -31,6 +31,8 @@ import lombok.ToString;
 @Getter @Setter @ToString(callSuper = true, exclude = {"documents"}) @NoArgsConstructor
 public class RegularUser extends UserProfile {
 
+    private static final long serialVersionUID = 1L;
+
     @NotNull
     @Temporal(TemporalType.TIMESTAMP) @Column(nullable = false)
     private Date signUpTs;
