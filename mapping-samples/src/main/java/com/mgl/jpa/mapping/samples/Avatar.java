@@ -15,7 +15,7 @@ import lombok.ToString;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-@Getter @Setter @ToString @NoArgsConstructor
+@Getter @Setter @ToString(callSuper = true, exclude = {"userProfile"}) @NoArgsConstructor
 public class Avatar extends BaseEntity {
 
     private static final int URL_MAX_LEN = 128;

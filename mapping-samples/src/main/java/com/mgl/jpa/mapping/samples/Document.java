@@ -34,7 +34,7 @@ import org.hibernate.validator.constraints.NotBlank;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "documentKind")
 @Audited
-@Getter @Setter @ToString(callSuper = true) @NoArgsConstructor
+@Getter @Setter @ToString(callSuper = true, exclude = {"authors"}) @NoArgsConstructor
 public abstract class Document extends BaseEntity {
 
     private static final int TITLE_MIN_LEN = 0;

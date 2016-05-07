@@ -28,7 +28,7 @@ import lombok.ToString;
     }
 )
 @DiscriminatorValue("r")
-@Getter @Setter @ToString(callSuper = true) @NoArgsConstructor
+@Getter @Setter @ToString(callSuper = true, exclude = {"documents"}) @NoArgsConstructor
 public class RegularUser extends UserProfile {
 
     @NotNull

@@ -35,7 +35,7 @@ import org.hibernate.validator.constraints.NotBlank;
         @UniqueConstraint(name = "company__email_uidx", columnNames = {"email"})
     }
 )
-@Getter @Setter @ToString(callSuper = true) @NoArgsConstructor
+@Getter @Setter @ToString(callSuper = true, exclude = {"userProfiles"}) @NoArgsConstructor
 public class Company extends TsControlledEntity implements HasContactInformation {
 
     private static final int ORG_NAME_MIN_LEN = 1;
