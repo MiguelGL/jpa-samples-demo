@@ -24,6 +24,7 @@
             <property name="javax.persistence.sql-load-script-source" value="src/test/sql/test-imports.sql"/>
 
             <property name="hibernate.validator.apply_to_ddl" value="true"/>
+            <!-- https://docs.jboss.org/hibernate/orm/5.1/userguide/html_single/Hibernate_User_Guide.html#naming -->
             <!-- https://docs.jboss.org/hibernate/orm/5.1/javadocs/org/hibernate/boot/model/naming/ImplicitNamingStrategy.html -->
             <!-- http://stackoverflow.com/questions/37062675/hibernate-5-1-x-naming-strategy-backward-compatible-with-hibernate-4-x -->
             <!-- https://github.com/v-ladynev/fluent-hibernate/blob/master/fluent-hibernate-core/src/main/java/com/github/fluent/hibernate/cfg/strategy/hibernate5/Hibernate5NamingStrategy.java -->
