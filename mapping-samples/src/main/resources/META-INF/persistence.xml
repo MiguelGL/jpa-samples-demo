@@ -6,9 +6,9 @@
         <class>com.mgl.jpa.mapping.samples.Avatar</class>
         <properties>
             <!-- <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/> -->
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <!--<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>-->
             <property name="javax.persistence.jdbc.dialect" value="org.hibernate.dialect.MySQLDialect" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa?zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;serverTimezone=UTC"/>
+            <!--<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa?zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;serverTimezone=UTC"/>-->
             <property name="javax.persistence.jdbc.user" value="jpa"/>
             <property name="javax.persistence.jdbc.password" value="jpa"/>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
@@ -21,11 +21,19 @@
             -->
             <property name="javax.persistence.sql-load-script-source" value="src/test/sql/test-imports.sql"/>
 
-
             <property name="hibernate.validator.apply_to_ddl" value="true"/>
 
             <property name="hibernate.show_sql" value="false" />
             <property name="hibernate.format_sql" value="false" />
+
+            <!-- https://github.com/brettwooldridge/HikariCP/wiki/MySQL-Configuration -->
+            <!--<property name="hibernate.connection.provider_class" value="com.zaxxer.hikari.hibernate.HikariConnectionProvider" />-->
+            <property name="hibernate.connection.provider_class" value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider" />
+            <property name="hibernate.hikari.minimumIdle" value="20" />
+            <property name="hibernate.hikari.maximumPoolSize" value="100" />
+            <property name="hibernate.hikari.idleTimeout" value="30000" />
+            <property name="hibernate.hikari.dataSourceClassName" value="com.mysql.cj.jdbc.MysqlDataSource" />
+            <property name="hibernate.hikari.dataSource.url" value="jdbc:mysql://localhost:3306/jpa?zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;serverTimezone=UTC" />
 
         </properties>
     </persistence-unit>

@@ -32,6 +32,9 @@
         <hibernate-commons.version>5.0.1.Final</hibernate-commons.version>
 
         <querydsl.version>4.1.0</querydsl.version>
+        <hikaricp.version>2.3.9</hikaricp.version> <!-- same as hibernate-hikari delcared -->
+
+        <slf4j.version>1.6.1</slf4j.version>
 
         <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
 
@@ -128,6 +131,12 @@
             </dependency>
 
             <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-hikaricp</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
@@ -158,6 +167,24 @@
                 <groupId>com.querydsl</groupId>
                 <artifactId>querydsl-jpa</artifactId>
                 <version>${querydsl.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.zaxxer</groupId>
+                <artifactId>HikariCP</artifactId>
+                <version>${hikaricp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-jdk14</artifactId>
+                <version>${slf4j.version}</version>
             </dependency>
 
         </dependencies>
