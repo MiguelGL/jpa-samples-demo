@@ -93,7 +93,7 @@
                                 <database>
                                     <name>org.jooq.util.mysql.MySQLDatabase</name>
                                     <includes>.*</includes>
-                                    <excludes />
+                                    <excludes>.*_Audit|REVINFO</excludes>
                                     <inputSchema>jpa</inputSchema>
                                     <outputSchema>jpa</outputSchema>
                                     <recordVersionFields>version</recordVersionFields>
