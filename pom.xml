@@ -285,6 +285,12 @@
                     <version>${delombok-maven-plugin.version}</version>
                 </plugin>
 
+                <plugin>
+                    <groupId>org.liquibase</groupId>
+                    <artifactId>liquibase-maven-plugin</artifactId>
+                    <version>${liquibase.version}</version>
+                </plugin>
+
             </plugins>
 
         </pluginManagement>
