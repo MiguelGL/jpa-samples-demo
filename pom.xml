@@ -35,6 +35,10 @@
         <querydsl.version>4.1.0</querydsl.version>
         <hikaricp.version>2.3.9</hikaricp.version> <!-- same as hibernate-hikari delcared -->
 
+        <jooq.version>3.8.0</jooq.version>
+        <liquibase.version>3.5.0</liquibase.version>
+        <liquibase-slf4j.version>2.0.0</liquibase-slf4j.version>
+
         <slf4j.version>1.6.1</slf4j.version>
 
         <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
@@ -46,6 +50,7 @@
 
     <modules>
         <module>mapping-samples</module>
+        <module>jooq-samples</module>
     </modules>
 
     <dependencyManagement>
@@ -193,6 +198,48 @@
                 <groupId>org.apache.derby</groupId>
                 <artifactId>derby</artifactId>
                 <version>${derby.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq</artifactId>
+                <version>${jooq.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jooq</groupId>
+                <artifactId>jool</artifactId>
+                <version>${jool.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-meta</artifactId>
+                <version>${jooq.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen</artifactId>
+                <version>${jooq.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-core</artifactId>
+                <version>${liquibase.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-cdi</artifactId>
+                <version>${liquibase.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.mattbertolini</groupId>
+                <artifactId>liquibase-slf4j</artifactId>
+                <version>${liquibase-slf4j.version}</version>
             </dependency>
 
         </dependencies>
