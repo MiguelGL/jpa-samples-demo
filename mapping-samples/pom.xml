@@ -92,6 +92,7 @@
             </exclusions>
         </dependency>
 
+        <!-- This makes hibernate generate the Metamodel classes "*_.java" -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-jpamodelgen</artifactId>
