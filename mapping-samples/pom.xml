@@ -308,6 +308,46 @@
 
         </profile>
 
+        <profile>
+
+            <id>liquibase-diff</id>
+
+            <build>
+
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <configuration>
+                            <changeLogFile>com/mgl/jpa/mapping/samples/migration/db-changelog-master.xml</changeLogFile>
+                            <diffChangeLogFile>target/liguibase-diff.xml</diffChangeLogFile>
+
+                            <driver>com.mysql.cj.jdbc.Driver</driver>
+                            <url>jdbc:mysql://localhost:3306/jpa?zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;serverTimezone=UTC&amp;nullNamePatternMatchesAll=true</url>
+                            <username>jpa</username>
+                            <password>jpa</password>
+
+                            <referenceDriver>com.mysql.cj.jdbc.Driver</referenceDriver>
+                            <referenceUrl>jdbc:mysql://localhost:3306/jpa2?zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;serverTimezone=UTC&amp;nullNamePatternMatchesAll=true</referenceUrl>
+                            <referenceUsername>jpa</referenceUsername>
+                            <referencePassword>jpa</referencePassword>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>diff</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                </plugins>
+            </build>
+
+        </profile>
+
     </profiles>
 
 </project>
