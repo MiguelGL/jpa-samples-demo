@@ -7,7 +7,7 @@
 
     <groupId>com.mgl.jpa</groupId>
     <artifactId>jpa-samples</artifactId>
-    <version>1.0.0.Final</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -73,7 +73,7 @@
         <connection>scm:git:https://github.com/MiguelGL/jpa-samples-demo.git</connection>
         <developerConnection>scm:git:git@github.com:MiguelGL/jpa-samples-demo.git</developerConnection>
         <url>https://github.com/MiguelGL/jpa-samples-demo</url>
-      <tag>v1.0.0.Final</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <modules>
