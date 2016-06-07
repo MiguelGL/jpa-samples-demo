@@ -49,7 +49,31 @@
 
         <delombok-maven-plugin.version>${lombok.version}.0</delombok-maven-plugin.version>
         <querydsl-apt-maven-plugin.version>1.1.3</querydsl-apt-maven-plugin.version>
+        <versions-maven-plugin.version>2.2</versions-maven-plugin.version>
+        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
     </properties>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Miguel García López</name>
+            <timezone>CET</timezone>
+            <organization>Personal</organization>
+            <url>https://github.com/MiguelGL</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/MiguelGL/jpa-samples-demo.git</connection>
+        <developerConnection>scm:git:git@github.com:MiguelGL/jpa-samples-demo.git</developerConnection>
+        <url>https://github.com/MiguelGL/jpa-samples-demo</url>
+    </scm>
 
     <modules>
         <module>mapping-samples</module>
@@ -291,6 +315,20 @@
                     <version>${liquibase.version}</version>
                 </plugin>
 
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>${versions-maven-plugin.version}</version>
+                    <configuration>
+                        <generateBackupPoms>false</generateBackupPoms>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${maven-release-plugin.version}</version>
+                </plugin>
+
             </plugins>
 
         </pluginManagement>
@@ -302,6 +340,16 @@
                 <version>${maven-surefire-plugin.version}</version>
             </plugin>
             
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <!-- I have Integration Tests that require a running MySQL server. -->
+                    <arguments>-DskipTests=true -Dmaven.deploy.skip=true</arguments>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
+
         </plugins>
 
     </build>
